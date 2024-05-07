@@ -1,0 +1,141 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap");
+$green: hsl(75, 94%, 57%);
+$white: hsl(0, 0%, 100%);
+$grey: hsl(0, 0%, 20%);
+$dark-grey: hsl(0, 0%, 12%);
+$off-black: hsl(0, 0%, 8%);
+$font-family: "Inter", sans-serif;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+a,
+span,
+button,
+img {
+  display: inline-block;
+}
+a {
+  text-decoration: none;
+}
+li {
+  list-style: none;
+}
+$font-weight: (
+  "regular": 400,
+  "medium": 600,
+  "bold": 700,
+);
+@mixin flexbox($jc: "center") {
+  display: flex;
+  align-items: center;
+  justify-content: $jc;
+}
+body {
+  font-size: 14px;
+  font-family: $font-family;
+  min-height: 100vh;
+  max-width: 100%;
+  background-color: $off-black;
+  @include flexbox(center);
+  color: $white;
+  .container {
+    background-color: $dark-grey;
+    border-radius: 8px;
+    padding: 2rem;
+    text-align: center;
+    .img-wrapper {
+      height: 80px;
+      width: 80px;
+      margin: 0 auto;
+      aspect-ratio: 1;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        border-radius: 50%;
+      }
+    }
+    .info {
+      margin-top: 2rem;
+      h1 {
+        font-size: 1.4rem;
+        font-weight: map-get($map: $font-weight, $key: "bold");
+      }
+      h2 {
+        font-weight: map-get($map: $font-weight, $key: "medium");
+        font-size: 1rem;
+        color: $green;
+        padding-top: 10px;
+      }
+    }
+    .job {
+      margin-block: 1.5rem;
+    }
+    .social-links {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      ul {
+        width: 100%;
+        li {
+          margin-block: 15px;
+          a {
+            color: $white;
+            padding-block: 1rem;
+            font-weight: map-get($map: $font-weight, $key: "regular");
+            transition: all 0.3s ease-in-out;
+            background-color: $grey;
+            display: block;
+            border-radius: 0.6rem;
+            &:hover {
+              background-color: $green;
+              color: $off-black;
+              cursor: pointer;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 375px) {
+  body {
+    padding: 2rem;
+  }
+  .container {
+    margin: 2rem;
+
+    main {
+      .card-wrapper {
+        .info {
+          margin-top: 1rem;
+          h1 {
+            font-size: 1rem;
+          }
+          h2 {
+            font-size: 0.6rem;
+          }
+        }
+        .job {
+          margin-block: 0.8rem;
+          white-space: nowrap;
+          padding-inline: 20px;
+        }
+        .social-links {
+          ul {
+            li a {
+              padding-block: 0.8rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 340px) {
+  .container {
+    margin: 2rem;
+  }
+}
